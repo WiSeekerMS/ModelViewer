@@ -541,8 +541,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6532959285683894769}
   - component: {fileID: 6532959285683894734}
+  - component: {fileID: -2538229102092215892}
   m_Layer: 0
-  m_Name: TestParts_1
+  m_Name: TestPart_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -567,7 +568,7 @@ Transform:
   - {fileID: 6532959285118649435}
   - {fileID: 6532959285212520978}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6532959285683894734
 BoxCollider:
@@ -590,6 +591,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 7, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2538229102092215892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6532959285683894768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792b22a0363e4a989cdbb270c24ca73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bodyFront: {fileID: 6532959283867247924}
 --- !u!1 &6532959285886658489
 GameObject:
   m_ObjectHideFlags: 0

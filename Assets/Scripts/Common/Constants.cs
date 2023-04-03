@@ -5,6 +5,8 @@
         //UI
         public const string InfoPanelOpenButtonText = "<";
         public const string InfoPanelCloseButtonText = ">";
+        public const string IncisionButtonOnText = "Incision On";
+        public const string IncisionButtonOffText = "Incision Off";
         
         //ModelEditor
         public const string OkButtonName = "Ok";

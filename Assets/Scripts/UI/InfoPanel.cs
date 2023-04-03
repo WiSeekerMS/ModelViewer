@@ -9,9 +9,9 @@ namespace UI
     public class InfoPanel : MonoBehaviour
     {
         [SerializeField] private Button _openButton;
-        [SerializeField] private TextMeshProUGUI _openButtonText;
         [SerializeField] private RectanglePositions _showPosition;
         [SerializeField] private RectanglePositions _hidePosition;
+        private TextMeshProUGUI _openButtonText;
         private RectTransform _rectTransform;
         private bool _isVisible;
 
@@ -30,6 +30,11 @@ namespace UI
         {
             _rectTransform = transform as RectTransform;
             _openButton.onClick.AddListener(OnPressedShowButton);
+        }
+        
+        private void Start()
+        {
+            _openButtonText = _openButton.GetComponentInChildren<TextMeshProUGUI>();
         }
 
         private void OnDestroy()

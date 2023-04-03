@@ -40,6 +40,12 @@ namespace Common
                 .AddTo(this);
         }
 
+        public void ResetRotation()
+        {
+            _xRotation = 0f;
+            _yRotation = 0f;
+        }
+
         private void OnUpdate()
         {
             if (!_inputService.IsGrab) 
