@@ -1,5 +1,8 @@
 ﻿using Common;
 using Common.Localization;
+using Factories;
+using Inventory;
+using Parts;
 using Services;
 using UI;
 using UnityEngine;
@@ -21,7 +24,15 @@ namespace Bootstrap
             Container.InstallRegistry(_uiController);
             Container.InstallRegistry(_playerController);
             Container.InstallRegistry(_localizationController);
+            
             Container.InstallService<InputService>();
+            
+            Container.InstallFactory<Model, ModelFactory>();
+            Container.InstallFactory<ModelButton, ModelButtonFactory>();
+
+            Container.Bind<ModelInventory>().AsSingle();
+            Container.Bind<ModelButtonInventory>().AsSingle();
+            Container.Bind<ModelDataInventory>().AsSingle();
         }
     }
 }

@@ -52,8 +52,8 @@ namespace Common
         {
             if (!_inputService.IsGrab) return;
 
-            var part = _sceneManager.GetCurrentModel;
-            if (part == null || part.Equals(null)) return;
+            var model = _sceneManager.GetCurrentModelData;
+            if (model == null || model.Equals(null)) return;
         
             var valueX = _inputService.XAxisDelta * Time.deltaTime * _mainConfig.MouseSensitive;
             var valueY = _inputService.YAxisDelta * Time.deltaTime * _mainConfig.MouseSensitive;
@@ -61,7 +61,7 @@ namespace Common
             _xRotation += valueY;
             _yRotation -= valueX;
 
-            part.SetLocalRotation = new Vector2(_xRotation, _yRotation);
+            model.SetLocalRotation = new Vector2(_xRotation, _yRotation);
         }
 
         private void OnFixedUpdate()

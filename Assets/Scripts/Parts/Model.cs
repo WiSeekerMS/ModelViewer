@@ -7,22 +7,40 @@ namespace Parts
 {
     public class Model : MonoBehaviour, IModel
     {
-        [SerializeField] private LocalizedItem _modelLocalizedItem;
+        [SerializeField] private LocalizedItem _modelName;
+        [SerializeField] private LocalizedItem _modelDescription;
         [SerializeField] private GameObject _bodyFront;
         [SerializeField] private Material _outlineMaterial;
         private List<OutlinePart> _outlineParts;
         private List<LocalizedItem> _localizedParts;
         private float _outlineScale;
 
-        public string GetLocalizedDescription => _modelLocalizedItem != null 
-            ? _modelLocalizedItem.LocalizedText
+        public bool Visibility
+        {
+            get => gameObject.activeSelf;
+            set => gameObject.SetActive(value);
+        }
+        
+        public string GetLocalizedName => _modelName != null
+            ? _modelName.LocalizedText
+            : string.Empty;
+        
+        public string GetLocalizedDescription => _modelDescription != null 
+            ? _modelDescription.LocalizedText
             : string.Empty;
 
         public Vector2 SetLocalRotation
         {
             set => transform.localRotation = Quaternion.Euler(value.x, value.y, 0f);
         }
-        
+
+        private void OnEnable()
+        {
+            ResetOutline();
+            ResetRotation();
+            SetVisibilityBodyFront(true);
+        }
+
         private void Start()
         {
             _localizedParts = transform
@@ -59,6 +77,12 @@ namespace Parts
                     ? _outlineScale
                     : 0f;
             });
+        }
+
+        public void ResetOutline()
+        {
+            _outlineParts
+                ?.ForEach(p => p.OutlineScale = 0f);
         }
 
         public string GetPartLocalizedText(GameObject obj)

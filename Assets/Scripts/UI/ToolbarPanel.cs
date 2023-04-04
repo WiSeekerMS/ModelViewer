@@ -7,13 +7,15 @@ using Button = UnityEngine.UI.Button;
 
 namespace UI
 {
-    public class Toolbar : MonoBehaviour
+    public class ToolbarPanel : MonoBehaviour
     {
         [SerializeField] private Button _incisionButton;
         [SerializeField] private Button _resetTurnButton;
         [SerializeField] private ScrollRect _scrollView;
         private TextMeshProUGUI _incisionButtonText;
         private bool _isIncision;
+
+        public RectTransform ButtonsContentRectTransform => _scrollView.content;
 
         public event Action<bool> PressedIncisionButton;
         public event Action PressedResetTurnButton;

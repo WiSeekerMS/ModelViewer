@@ -19,5 +19,13 @@ namespace Utils.Extensions
                 .FromInstance(registry)
                 .AsSingle();
         }
+        
+        public static void InstallFactory<TContext, TFactory>(this DiContainer container) 
+            where TFactory : PlaceholderFactory<TContext>
+        {
+            container
+                .BindFactory<TContext, TFactory>()
+                .AsSingle();
+        }
     }
 }

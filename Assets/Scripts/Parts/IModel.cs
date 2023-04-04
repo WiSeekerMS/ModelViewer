@@ -2,13 +2,11 @@
 
 namespace Parts
 {
-    public interface IModel
+    public interface IModel : IModelTransform, IModelLocalization
     {
-        string GetLocalizedDescription { get; }
-        Vector2 SetLocalRotation { set; }
+        bool Visibility { get; set; }
         void SetVisibilityBodyFront(bool isVisible);
-        void ResetRotation();
         void MakeAnOutline(GameObject obj);
-        string GetPartLocalizedText(GameObject obj);
+        void ResetOutline();
     }
 }

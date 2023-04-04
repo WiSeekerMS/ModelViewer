@@ -63,6 +63,14 @@ MonoBehaviour:
     m_Key: TestPart_Cube_2
     m_Metadata:
       m_Items: []
+  - m_Id: 83369167798272
+    m_Key: TestMode_Name_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83555814326272
+    m_Key: TestMode_Name_2
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
