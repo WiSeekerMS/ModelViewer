@@ -4,13 +4,13 @@ namespace Parts
 {
     public class ModelData
     {
-        private readonly Model _model;
+        private readonly IModel _model;
         private readonly ModelButton _button;
 
-        public Model Model => _model;
+        public IModel Model => _model;
         public ModelButton ModelButton => _button;
         
-        public ModelData(Model model, ModelButton button)
+        public ModelData(IModel model, ModelButton button)
         {
             _model = model;
             _button = button;

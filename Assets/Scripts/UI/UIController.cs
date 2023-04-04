@@ -29,7 +29,6 @@ namespace UI
         public void Init()
         {
             _infoPanel.SetVisible = false;
- 
             _modelDataInventory.ModelsData.ForEach(data =>
             {
                 data.ModelButton.Button.onClick.AddListener(() => OnPressedModelDataButton(data));
@@ -44,8 +43,28 @@ namespace UI
             });
         }
 
+        private void EnableDataButton(ModelData data, bool value)
+        {
+            data.ModelButton.Button.interactable = value;
+        }
+
+        private void ToggleActiveButton(ModelData data)
+        {
+            _modelDataInventory.ModelsData
+                .ForEach(modelData =>
+                {
+                    var value = data != modelData;
+                    EnableDataButton(modelData, value);
+                });
+        }
+
         private void OnPressedModelDataButton(ModelData data)
         {
+            ToggleActiveButton(data);
+
+            _infoPanel.SetDescriptionText = data.Model.GetLocalizedDescription;
+            _infoPanel.SetPartName = string.Empty;
+            
             PressedDataButton?.Invoke(data);
         }
     }

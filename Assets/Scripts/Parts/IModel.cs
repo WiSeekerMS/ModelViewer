@@ -1,12 +1,9 @@
-﻿using UnityEngine;
-
-namespace Parts
+﻿namespace Parts
 {
-    public interface IModel : IModelTransform, IModelLocalization
+    public interface IModel : IModelTransform, IModelOutline, 
+        IModelDecompose, IModelAnimated, IModelLocalization
     {
         bool Visibility { get; set; }
         void SetVisibilityBodyFront(bool isVisible);
-        void MakeAnOutline(GameObject obj);
-        void ResetOutline();
     }
 }

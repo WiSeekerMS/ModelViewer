@@ -11,19 +11,21 @@ namespace UI
     {
         [SerializeField] private Button _incisionButton;
         [SerializeField] private Button _resetTurnButton;
+        [SerializeField] private Button _effectButton;
         [SerializeField] private ScrollRect _scrollView;
         private TextMeshProUGUI _incisionButtonText;
         private bool _isIncision;
 
         public RectTransform ButtonsContentRectTransform => _scrollView.content;
-
         public event Action<bool> PressedIncisionButton;
         public event Action PressedResetTurnButton;
+        public event Action PressedEffectButton;
 
         private void Awake()
         {
             _incisionButton.onClick.AddListener(OnPressedIncisionButton);
             _resetTurnButton.onClick.AddListener(OnPressedResetTurnButton);
+            _effectButton.onClick.AddListener(OnPressedEffectButton);
         }
 
         private void Start()
@@ -36,6 +38,7 @@ namespace UI
         {
             _incisionButton.onClick.RemoveAllListeners();
             _resetTurnButton.onClick.RemoveAllListeners();
+            _effectButton.onClick.RemoveAllListeners();
         }
 
         private void SetIncisionButtonText()
@@ -60,6 +63,11 @@ namespace UI
         private void OnPressedResetTurnButton()
         {
             PressedResetTurnButton?.Invoke();
+        }
+
+        private void OnPressedEffectButton()
+        {
+            PressedEffectButton?.Invoke();
         }
     }
 }

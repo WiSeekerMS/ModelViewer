@@ -14,6 +14,11 @@ namespace UI
         public string SetButtonText
         {
             set => _nameTMP.text = value;
-        } 
+        }
+
+        public void ResetScale()
+        {
+            _button.transform.localScale = Vector3.one;
+        }
     }
 }

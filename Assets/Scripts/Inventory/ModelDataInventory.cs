@@ -29,8 +29,11 @@ namespace Inventory
         {
             var model = _modelInventory.CreateModel(modelPrefab, Vector3.zero, modelParent);
             var button = _buttonInventory.CreateButton(buttonPrefab, Vector3.zero, buttonsParent);
+            button.ResetScale();
+            
             var modelData = new ModelData(model, button);
             _modelsData.Add(modelData);
+            
             yield return modelData;
         }
 

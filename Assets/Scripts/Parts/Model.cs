@@ -91,5 +91,13 @@ namespace Parts
                 ?.FirstOrDefault(l => string.Equals(l.name, obj.name))
                 ?.LocalizedText;
         }
+
+        public void StartAnimation()
+        {
+        }
+
+        public void StopAnimation()
+        {
+        }
     }
 }
