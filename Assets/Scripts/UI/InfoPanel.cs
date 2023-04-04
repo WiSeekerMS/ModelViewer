@@ -9,8 +9,11 @@ namespace UI
     public class InfoPanel : MonoBehaviour
     {
         [SerializeField] private Button _openButton;
-        [SerializeField] private RectanglePositions _showPosition;
-        [SerializeField] private RectanglePositions _hidePosition;
+        [SerializeField] private ScrollRect _infoScrollView;
+        [SerializeField] private TextMeshProUGUI _partNameTMP;
+        [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private RectanglePosition showPosition;
+        [SerializeField] private RectanglePosition hidePosition;
         private TextMeshProUGUI _openButtonText;
         private RectTransform _rectTransform;
         private bool _isVisible;
@@ -22,14 +25,20 @@ namespace UI
             set
             {
                 _isVisible = value;
+                SetVisibility();
                 OnPressedShowButton();
             }
+        }
+
+        public string SetPartName
+        {
+            set => _partNameTMP.text = Constants.PartNameLabel + value;
         }
 
         private void Awake()
         {
             _rectTransform = transform as RectTransform;
-            _openButton.onClick.AddListener(OnPressedShowButton);
+            _openButton.onClick.AddListener(() => SetVisible = !_isVisible);
         }
         
         private void Start()
@@ -41,10 +50,16 @@ namespace UI
         {
             _openButton.onClick.RemoveAllListeners();
         }
+        
+        private void SetVisibility()
+        {
+            _canvasGroup.alpha = _isVisible ? 1f : 0f;
+            _canvasGroup.interactable = _isVisible;
+        }
 
         private void OnPressedShowButton()
         {
-            var position = _isVisible ? _showPosition : _hidePosition;
+            var position = _isVisible ? showPosition : hidePosition;
             _rectTransform.offsetMax = new Vector2(-position.Right, -position.Top);
             
             _openButtonText.text = _isVisible 
@@ -52,7 +67,6 @@ namespace UI
                 : Constants.InfoPanelCloseButtonText;
             
             ChangedVisibility?.Invoke(_rectTransform);
-            _isVisible = !_isVisible;
         }
     }
 }

@@ -12,8 +12,6 @@ namespace UI
         [SerializeField] private Button _incisionButton;
         [SerializeField] private Button _resetTurnButton;
         [SerializeField] private ScrollRect _scrollView;
-        private RectTransform _scrollViewContent;
-        private VerticalLayoutGroup _verticalLayoutGroup;
         private TextMeshProUGUI _incisionButtonText;
         private bool _isIncision;
 
@@ -28,10 +26,7 @@ namespace UI
 
         private void Start()
         {
-            _scrollViewContent = _scrollView.content;
-            _verticalLayoutGroup = _scrollViewContent.GetComponent<VerticalLayoutGroup>();
             _incisionButtonText = _incisionButton.GetComponentInChildren<TextMeshProUGUI>();
-            
             SetIncisionButtonText();
         }
 
@@ -41,23 +36,6 @@ namespace UI
             _resetTurnButton.onClick.RemoveAllListeners();
         }
 
-        public void FillModelsDataList()
-        {
-            var spacing = _verticalLayoutGroup != null 
-                ? _verticalLayoutGroup.spacing 
-                : 0f;
-
-            /*var offsetMax = _scrollViewContent.offsetMax;
-            var prefabTransform = infoPrefab.transform as RectTransform;
-            var rightShift = prefabTransform.sizeDelta.x * configs.Count + (configs.Count * spacing);
-
-            _scrollViewContent.offsetMax = new Vector2
-            {
-                x = offsetMax.x + rightShift, 
-                y = offsetMax.y
-            };*/
-        }
-        
         private void SetIncisionButtonText()
         {
             if (_incisionButtonText == null)

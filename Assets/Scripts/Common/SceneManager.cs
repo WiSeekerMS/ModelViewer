@@ -9,13 +9,15 @@ namespace Common
     {
         [SerializeField] private Camera _playerCamera;
         [SerializeField] private Camera _canvasCamera;
-        private UIController _uiController;
         private PlayerController _playerController;
+        private UIController _uiController;
+        private IPart _currentPart;
 
         [SerializeField] private Part _testPart;
 
         public Camera PlayerCamera => _playerCamera;
         public Camera CanvasCamera => _canvasCamera;
+        public IPart GetCurrentPart => _currentPart;
 
         [Inject]
         private void Constructor(
@@ -30,12 +32,19 @@ namespace Common
         {
             _uiController.Toolbar.PressedIncisionButton += OnPressedIncisionButton;
             _uiController.Toolbar.PressedResetTurnButton += OnPressedResetTurnButton;
+            _playerController.HitObject += OnHitObject;
+        }
+
+        private void Start()
+        {
+            _currentPart = _testPart;
         }
 
         private void OnDestroy()
         {
             _uiController.Toolbar.PressedIncisionButton -= OnPressedIncisionButton;
             _uiController.Toolbar.PressedResetTurnButton -= OnPressedResetTurnButton;
+            _playerController.HitObject -= OnHitObject;
         }
 
         private void OnPressedIncisionButton(bool isIncision)
@@ -47,6 +56,11 @@ namespace Common
         {
             _testPart.ResetRotation();
             _playerController.ResetRotation();
+        }
+
+        private void OnHitObject(GameObject obj)
+        {
+            _uiController.InfoPanel.SetPartName = obj.name;
         }
     }
 }

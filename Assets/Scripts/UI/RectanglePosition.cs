@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UI
 {
     [Serializable]
-    public class RectanglePositions
+    public class RectanglePosition
     {
         [SerializeField] private float _left;
         [SerializeField] private float _top;

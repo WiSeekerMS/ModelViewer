@@ -1,3 +1,4 @@
+using System;
 using Configs;
 using Services;
 using UniRx;
@@ -8,13 +9,14 @@ namespace Common
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private Transform _testObject;
         private SceneManager _sceneManager;
         private InputService _inputService;
         private MainConfig _mainConfig;
+        private RaycastHit _lastHit;
         private float _xRotation;
         private float _yRotation;
-        private bool _isHit;
+
+        public event Action<GameObject> HitObject;
 
         [Inject]
         private void Constructor(
@@ -48,8 +50,10 @@ namespace Common
 
         private void OnUpdate()
         {
-            if (!_inputService.IsGrab) 
-                return;
+            if (!_inputService.IsGrab) return;
+
+            var part = _sceneManager.GetCurrentPart;
+            if (part == null || part.Equals(null)) return;
         
             var valueX = _inputService.XAxisDelta * Time.deltaTime * _mainConfig.MouseSensitive;
             var valueY = _inputService.YAxisDelta * Time.deltaTime * _mainConfig.MouseSensitive;
@@ -57,16 +61,18 @@ namespace Common
             _xRotation += valueY;
             _yRotation -= valueX;
 
-            _testObject.localRotation = Quaternion.Euler(_xRotation, _yRotation, 0f);
+            part.SetLocalRotation = new Vector2(_xRotation, _yRotation);
         }
 
         private void OnFixedUpdate()
         {
             var mousePosition = _inputService.MousePosition; 
             var ray = _sceneManager.PlayerCamera.ScreenPointToRay(mousePosition);
-            _isHit = Physics.Raycast(ray, out var hitInfo, Mathf.Infinity);
-            if (!_isHit) return;
-
+            var isHit = Physics.Raycast(ray, out var hitInfo, Mathf.Infinity);
+            if (!isHit || _lastHit.collider == hitInfo.collider) return;
+            
+            _lastHit = hitInfo;
+            HitObject?.Invoke(_lastHit.transform.gameObject);
             Debug.DrawRay(ray.origin, ray.direction * hitInfo.distance, Color.red);
         }
     }
