@@ -52,7 +52,7 @@ namespace Common
         {
             if (!_inputService.IsGrab) return;
 
-            var part = _sceneManager.GetCurrentPart;
+            var part = _sceneManager.GetCurrentModel;
             if (part == null || part.Equals(null)) return;
         
             var valueX = _inputService.XAxisDelta * Time.deltaTime * _mainConfig.MouseSensitive;

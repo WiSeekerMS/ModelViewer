@@ -9,12 +9,12 @@ namespace UI
     public class InfoPanel : MonoBehaviour
     {
         [SerializeField] private Button _openButton;
-        [SerializeField] private ScrollRect _infoScrollView;
+        [SerializeField] private TextMeshProUGUI _descriptionTMP;
         [SerializeField] private TextMeshProUGUI _partNameTMP;
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private RectanglePosition showPosition;
         [SerializeField] private RectanglePosition hidePosition;
-        private TextMeshProUGUI _openButtonText;
+        private TextMeshProUGUI _openButtonTMP;
         private RectTransform _rectTransform;
         private bool _isVisible;
 
@@ -28,6 +28,11 @@ namespace UI
                 SetVisibility();
                 OnPressedShowButton();
             }
+        }
+        
+        public string SetDescriptionText
+        {
+            set => _descriptionTMP.text = value;
         }
 
         public string SetPartName
@@ -43,7 +48,7 @@ namespace UI
         
         private void Start()
         {
-            _openButtonText = _openButton.GetComponentInChildren<TextMeshProUGUI>();
+            _openButtonTMP = _openButton.GetComponentInChildren<TextMeshProUGUI>();
         }
 
         private void OnDestroy()
@@ -62,7 +67,7 @@ namespace UI
             var position = _isVisible ? showPosition : hidePosition;
             _rectTransform.offsetMax = new Vector2(-position.Right, -position.Top);
             
-            _openButtonText.text = _isVisible 
+            _openButtonTMP.text = _isVisible 
                 ? Constants.InfoPanelOpenButtonText 
                 : Constants.InfoPanelCloseButtonText;
             

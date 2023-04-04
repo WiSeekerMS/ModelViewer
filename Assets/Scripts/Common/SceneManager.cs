@@ -1,4 +1,6 @@
-﻿using Parts;
+﻿using System.Collections;
+using Common.Localization;
+using Parts;
 using UI;
 using UnityEngine;
 using Zenject;
@@ -9,23 +11,26 @@ namespace Common
     {
         [SerializeField] private Camera _playerCamera;
         [SerializeField] private Camera _canvasCamera;
+        private LocalizationController _localizationController;
         private PlayerController _playerController;
         private UIController _uiController;
-        private IPart _currentPart;
+        private IModel _currentModel;
 
-        [SerializeField] private Part _testPart;
+        [SerializeField] private Model _testPart;
 
         public Camera PlayerCamera => _playerCamera;
         public Camera CanvasCamera => _canvasCamera;
-        public IPart GetCurrentPart => _currentPart;
+        public IModel GetCurrentModel => _currentModel;
 
         [Inject]
         private void Constructor(
             UIController uiController, 
-            PlayerController playerController)
+            PlayerController playerController,
+            LocalizationController localizationController)
         {
             _uiController = uiController;
             _playerController = playerController;
+            _localizationController = localizationController;
         }
 
         private void Awake()
@@ -35,9 +40,12 @@ namespace Common
             _playerController.HitObject += OnHitObject;
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
-            _currentPart = _testPart;
+            yield return _localizationController.LocalizationInitialization();
+            
+            _currentModel = _testPart;
+            _uiController.InfoPanel.SetDescriptionText = _currentModel.GetLocalizedDescription;
         }
 
         private void OnDestroy()
@@ -60,7 +68,9 @@ namespace Common
 
         private void OnHitObject(GameObject obj)
         {
-            _uiController.InfoPanel.SetPartName = obj.name;
+            var partLocalizedText = _testPart.GetPartLocalizedText(obj);
+            _uiController.InfoPanel.SetPartName = partLocalizedText;
+            _testPart.MakeAnOutline(obj);
         }
     }
 }

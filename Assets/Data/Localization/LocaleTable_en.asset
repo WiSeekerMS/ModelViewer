@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LocaleTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 536753a823adf154a983bf8975c0aca4, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 4540448768
+    m_Localized: Test model description 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 981003780096
+    m_Localized: Cube
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820714258432
+    m_Localized: Big gear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796395683840
+    m_Localized: Small gear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 717807009792
+    m_Localized: Cylinder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443784740864
+    m_Localized: Body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21856738459648
+    m_Localized: Test model description 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23549781852160
+    m_Localized: Body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23638281666560
+    m_Localized: Cylinder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23676907012096
+    m_Localized: Small gear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23710197202944
+    m_Localized: Big gear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23766153412608
+    m_Localized: Cube
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

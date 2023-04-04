@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: MainConfig
   m_EditorClassIdentifier: 
   _mouseSensitive: 15
+  _modelPrefabs:
+  - {fileID: -2538229102092215892, guid: d27633207b41adf48b0eb930fcf167e0, type: 3}

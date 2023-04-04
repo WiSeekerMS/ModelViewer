@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: LocaleTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: LocaleTable
+  m_TableCollectionNameGuidString: 536753a823adf154a983bf8975c0aca4
+  m_Entries:
+  - m_Id: 4540448768
+    m_Key: TestModel_Description_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443784740864
+    m_Key: TestModel_Body_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 717807009792
+    m_Key: TestPart_Cylinder_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796395683840
+    m_Key: TestPart_GearMin_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820714258432
+    m_Key: TestPart_GearMax_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 981003780096
+    m_Key: TestPart_Cube_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21856738459648
+    m_Key: TestModel_Description_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23549781852160
+    m_Key: TestModel_Body_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23638281666560
+    m_Key: TestPart_Cylinder_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23676907012096
+    m_Key: TestPart_GearMin_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23710197202944
+    m_Key: TestPart_GearMax_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23766153412608
+    m_Key: TestPart_Cube_2
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 6634622589563306010
+  references:
+    version: 2
+    RefIds:
+    - rid: 6634622589563306010
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1680613354170
