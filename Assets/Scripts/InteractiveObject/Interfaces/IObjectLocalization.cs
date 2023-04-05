@@ -1,5 +1,4 @@
 ﻿using InteractiveObject.Base;
-using UnityEngine;
 
 namespace InteractiveObject.Interfaces
 {

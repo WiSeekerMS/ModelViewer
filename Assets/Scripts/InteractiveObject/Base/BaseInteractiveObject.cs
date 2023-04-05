@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Common;
 using Common.Localization;
+using InteractiveObject.Effects;
 using InteractiveObject.Interfaces;
 using UnityEngine;
 
@@ -10,9 +12,10 @@ namespace InteractiveObject.Base
     {
         [SerializeField] protected LocalizedItem _modelName;
         [SerializeField] protected LocalizedItem _modelDescription;
-        [SerializeField] protected GameObject _bodyFront;
+        [SerializeField] protected BasePart _bodyFront;
         [SerializeField] protected Material _outlineMaterial;
         protected List<BasePart> _parts;
+        protected List<IEffect> _effects;
         protected float _outlineScale;
 
         public bool Visibility
@@ -43,6 +46,10 @@ namespace InteractiveObject.Base
 
         private void Start()
         {
+            _effects = transform
+                .GetComponents<IEffect>()
+                .ToList();
+            
             _parts = transform
                 .GetComponentsInChildren<BasePart>()
                 .ToList();
@@ -57,7 +64,7 @@ namespace InteractiveObject.Base
 
         public void SetVisibilityBodyFront(bool isVisible)
         {
-            _bodyFront.SetActive(isVisible);
+            _bodyFront.Visibility = isVisible;
         }
 
         public void ResetRotation()
@@ -86,12 +93,40 @@ namespace InteractiveObject.Base
             return string.Empty;
         }
 
-        public virtual void StartAnimation()
+        private IEffect GetEffectByType(EffectType effectType)
         {
+            if (_effects == null)
+            {
+                Debug.Log("[BaseInteractiveObject] Effect list is empty.");
+                return null;
+            }
+
+            var effect = _effects.Find(e => e.EffectType == effectType);
+            if (effect == null)
+            {
+                Debug.Log("[BaseInteractiveObject] Specified effect not found.");
+                return null;
+            }
+
+            return effect;
         }
 
-        public virtual void StopAnimation()
+        public void PlayEffect(EffectType effectType)
         {
+            var effect = GetEffectByType(effectType);
+            if (effect == null || effect.Equals(null))
+                return;
+            
+            effect.Play();
+        }
+
+        public void StopEffect(EffectType effectType)
+        {
+            var effect = GetEffectByType(effectType);
+            if (effect == null || effect.Equals(null))
+                return;
+            
+            effect.Stop();
         }
     }
 }

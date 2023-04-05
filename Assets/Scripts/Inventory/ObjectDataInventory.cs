@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using InteractiveObject;
 using InteractiveObject.Base;
-using InteractiveObject.ExampleObjects;
 using UI;
 using UnityEngine;
 

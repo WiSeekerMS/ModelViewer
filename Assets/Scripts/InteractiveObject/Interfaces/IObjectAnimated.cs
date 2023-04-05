@@ -1,8 +1,10 @@
-﻿namespace InteractiveObject.Interfaces
+﻿using Common;
+
+namespace InteractiveObject.Interfaces
 {
     public interface IObjectAnimated
     {
-        void StartAnimation();
-        void StopAnimation();
+        void PlayEffect(EffectType effectType);
+        void StopEffect(EffectType effectType);
     }
 }

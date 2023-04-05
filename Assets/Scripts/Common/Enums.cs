@@ -2,6 +2,6 @@
 {
     public enum EffectType
     {
-        None, Decompose
+        None, Decompose, MainEffect
     }
 }

@@ -47,6 +47,8 @@ namespace Common
         {
             _uiController.ToolbarPanel.PressedIncisionButton += OnPressedIncisionButton;
             _uiController.ToolbarPanel.PressedResetTurnButton += OnPressedResetTurnButton;
+            _uiController.ToolbarPanel.PressedEffectButton += OnPressedEffectButton;
+            _uiController.ToolbarPanel.PressedDecomposeButton += OnPressedEffectButton;
             _uiController.PressedDataButton += OnPressedDataButton;
             _playerController.HitObject += OnHitObject;
         }
@@ -75,6 +77,8 @@ namespace Common
         {
             _uiController.ToolbarPanel.PressedIncisionButton -= OnPressedIncisionButton;
             _uiController.ToolbarPanel.PressedResetTurnButton -= OnPressedResetTurnButton;
+            _uiController.ToolbarPanel.PressedEffectButton -= OnPressedEffectButton;
+            _uiController.ToolbarPanel.PressedDecomposeButton -= OnPressedEffectButton;
             _uiController.PressedDataButton -= OnPressedDataButton;
             _playerController.HitObject -= OnHitObject;
         }
@@ -112,6 +116,23 @@ namespace Common
             
             _currentInteractiveObjectData.InteractiveObject.ResetRotation();
             _playerController.ResetRotation();
+        }
+        
+        private void OnPressedEffectButton(EffectType effectType, bool isOn)
+        {
+            if (!CheckCurrentModelDataAvailability())
+                return;
+
+            var obj = _currentInteractiveObjectData.InteractiveObject;
+            switch (isOn)
+            {
+                case true:
+                    obj.StopEffect(effectType);
+                    break;
+                case false:
+                    obj.PlayEffect(effectType);
+                    break;
+            }
         }
 
         private void OnHitObject(GameObject obj)

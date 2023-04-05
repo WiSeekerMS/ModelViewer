@@ -5,8 +5,9 @@
         //UI
         public const string InfoPanelOpenButtonText = "<";
         public const string InfoPanelCloseButtonText = ">";
-        public const string IncisionButtonOnText = "Incision On";
-        public const string IncisionButtonOffText = "Incision Off";
+        public const string IncisionButtonText = "Incision";
+        public const string DecomposeButtonText = "Decompose";
+        public const string EffectButtonText = "Effect";
         public const string PartNameLabel = "Part Name: ";
 
         //Other

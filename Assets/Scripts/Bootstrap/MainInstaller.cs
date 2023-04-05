@@ -26,8 +26,7 @@ namespace Bootstrap
             Container.InstallRegistry(_localizationController);
             
             Container.InstallService<InputService>();
-            Container.InstallService<RaycastService>();
-            
+
             Container.InstallFactory<BaseInteractiveObject, InteractiveObjectFactory>();
             Container.InstallFactory<ModelButton, ObjectButtonFactory>();
 

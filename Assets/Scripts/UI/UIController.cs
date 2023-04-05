@@ -62,7 +62,7 @@ namespace UI
         {
             ToggleActiveButton(data);
 
-            _toolbarPanel.ResetIncisionButton();
+            _toolbarPanel.ResetButtons();
             _infoPanel.SetDescriptionText = data.InteractiveObject.GetLocalizedDescription;
             _infoPanel.SetPartName = string.Empty;
             

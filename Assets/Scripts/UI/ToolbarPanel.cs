@@ -1,6 +1,5 @@
 ﻿using System;
 using Common;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
@@ -9,29 +8,31 @@ namespace UI
 {
     public class ToolbarPanel : MonoBehaviour
     {
-        [SerializeField] private Button _incisionButton;
+        [SerializeField] private CustomButton _incisionButton;
+        [SerializeField] private CustomButton _effectButton;
+        [SerializeField] private CustomButton _decomposeButton;
         [SerializeField] private Button _resetTurnButton;
-        [SerializeField] private Button _effectButton;
         [SerializeField] private ScrollRect _scrollView;
-        private TextMeshProUGUI _incisionButtonText;
-        private bool _isIncision;
 
         public RectTransform ButtonsContentRectTransform => _scrollView.content;
         public event Action<bool> PressedIncisionButton;
         public event Action PressedResetTurnButton;
-        public event Action PressedEffectButton;
+        public event Action<EffectType, bool> PressedEffectButton;
+        public event Action<EffectType, bool> PressedDecomposeButton;
 
         private void Awake()
         {
             _incisionButton.onClick.AddListener(OnPressedIncisionButton);
             _resetTurnButton.onClick.AddListener(OnPressedResetTurnButton);
             _effectButton.onClick.AddListener(OnPressedEffectButton);
+            _decomposeButton.onClick.AddListener(OnPressedDecomposeButton);
         }
 
         private void Start()
         {
-            _incisionButtonText = _incisionButton.GetComponentInChildren<TextMeshProUGUI>();
-            SetIncisionButtonText();
+            _incisionButton.Init(Constants.IncisionButtonText);
+            _decomposeButton.Init(Constants.DecomposeButtonText);
+            _effectButton.Init(Constants.EffectButtonText);
         }
 
         private void OnDestroy()
@@ -39,25 +40,12 @@ namespace UI
             _incisionButton.onClick.RemoveAllListeners();
             _resetTurnButton.onClick.RemoveAllListeners();
             _effectButton.onClick.RemoveAllListeners();
-        }
-
-        private void SetIncisionButtonText()
-        {
-            if (_incisionButtonText == null)
-            {
-                return;
-            }
-
-            _incisionButtonText.text = _isIncision
-                ? Constants.IncisionButtonOffText
-                : Constants.IncisionButtonOnText;
+            _decomposeButton.onClick.RemoveAllListeners();
         }
 
         private void OnPressedIncisionButton()
         {
-            PressedIncisionButton?.Invoke(_isIncision);
-            _isIncision = !_isIncision;
-            SetIncisionButtonText();
+            PressedIncisionButton?.Invoke(_incisionButton.IsOn);
         }
         
         private void OnPressedResetTurnButton()
@@ -67,13 +55,19 @@ namespace UI
 
         private void OnPressedEffectButton()
         {
-            PressedEffectButton?.Invoke();
+            PressedEffectButton?.Invoke(EffectType.MainEffect, _effectButton.IsOn);
         }
 
-        public void ResetIncisionButton()
+        private void OnPressedDecomposeButton()
         {
-            _isIncision = false;
-            SetIncisionButtonText();
+            PressedDecomposeButton?.Invoke(EffectType.Decompose, _decomposeButton.IsOn);
+        }
+
+        public void ResetButtons()
+        {
+            _incisionButton.ResetButton();
+            _decomposeButton.ResetButton();
+            _effectButton.ResetButton();
         }
     }
 }

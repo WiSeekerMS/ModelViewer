@@ -11,13 +11,5 @@ namespace InteractiveObject.ExampleObjects
                 ?.FirstOrDefault(p => string.Equals(p.name, obj.name))
                 ?.GetLocalizedItem.LocalizedText;
         }
-
-        public override void StartAnimation()
-        {
-        }
-
-        public override void StopAnimation()
-        {
-        }
     }
 }

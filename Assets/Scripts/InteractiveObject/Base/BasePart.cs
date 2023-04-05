@@ -1,4 +1,5 @@
-﻿using Common.Localization;
+﻿using System.Collections.Generic;
+using Common.Localization;
 using InteractiveObject.Part;
 using InteractiveObject.Part.Interfaces;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace InteractiveObject.Base
 {
     public class BasePart : MonoBehaviour, IOutline, ILocalizable, IDecomposable
     {
+        [SerializeField] private List<MeshRenderer> _renderers;
         [SerializeField] private OutlinePart _outlinePart;
         [SerializeField] private LocalizedItem _localizedItem;
         [SerializeField] private Vector3 _decomposeLocalPosition;
@@ -14,6 +16,17 @@ namespace InteractiveObject.Base
         [SerializeField] private bool _isHideWhenDecomposing;
         private Vector3 _defaultLocalPosition;
         private Quaternion _defaultLocalRotate;
+        
+        public bool Visibility
+        {
+            get => gameObject.activeSelf;
+            set => gameObject.SetActive(value);
+        }
+
+        public bool EnableRenderers
+        {
+            set => _renderers.ForEach(r => r.enabled = value);
+        }
 
         public bool IsHideWhenDecomposing => _isHideWhenDecomposing;
         public OutlinePart GetOutlinePart => _outlinePart;
@@ -23,7 +36,7 @@ namespace InteractiveObject.Base
         public Vector3 GetTargetLocalPosition => _decomposeLocalPosition;
         public Quaternion GetTargetLocalRotate => Quaternion.Euler(_decomposeLocalRotate);
 
-        private void Start()
+        private void Awake()
         {
             _defaultLocalPosition = transform.localPosition;
             _defaultLocalRotate = transform.localRotation;
