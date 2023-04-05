@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Inventory
 {
-    public class ModelButtonInventory
+    public class ObjectButtonInventory
     {
-        private ModelButtonFactory _factory;
+        private ObjectButtonFactory _factory;
         private List<ModelButton> _buttons = new List<ModelButton>();
 
-        public ModelButtonInventory(ModelButtonFactory factory)
+        public ObjectButtonInventory(ObjectButtonFactory factory)
         {
             _factory = factory;
         }

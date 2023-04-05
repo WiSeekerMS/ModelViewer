@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Parts
+namespace InteractiveObject.Interfaces
 {
-    public interface IModelOutline
+    public interface IObjectOutline
     {
         void MakeAnOutline(GameObject obj);
         void ResetOutline();

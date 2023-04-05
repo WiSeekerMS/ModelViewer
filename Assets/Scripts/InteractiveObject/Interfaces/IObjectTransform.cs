@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Parts
+namespace InteractiveObject.Interfaces
 {
-    public interface IModelTransform
+    public interface IObjectTransform
     {
         Vector2 SetLocalRotation { set; }
         void ResetRotation();

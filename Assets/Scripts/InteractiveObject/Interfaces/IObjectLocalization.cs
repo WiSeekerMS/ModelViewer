@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Parts
+namespace InteractiveObject.Interfaces
 {
-    public interface IModelLocalization
+    public interface IObjectLocalization
     {
         string GetLocalizedName { get; }
         string GetLocalizedDescription { get; }

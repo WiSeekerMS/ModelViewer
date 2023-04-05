@@ -4,11 +4,11 @@ using Zenject;
 
 namespace Factories
 {
-    public class ModelButtonFactory : PlaceholderFactory<ModelButton>
+    public class ObjectButtonFactory : PlaceholderFactory<ModelButton>
     {
         private DiContainer _diContainer;
 
-        public ModelButtonFactory(DiContainer diContainer)
+        public ObjectButtonFactory(DiContainer diContainer)
         {
             _diContainer = diContainer;
         }

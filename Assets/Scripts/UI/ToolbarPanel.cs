@@ -69,5 +69,11 @@ namespace UI
         {
             PressedEffectButton?.Invoke();
         }
+
+        public void ResetIncisionButton()
+        {
+            _isIncision = false;
+            SetIncisionButtonText();
+        }
     }
 }

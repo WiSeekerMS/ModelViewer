@@ -1,6 +1,6 @@
 ﻿using System;
+using InteractiveObject;
 using Inventory;
-using Parts;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -11,25 +11,25 @@ namespace UI
     {
         [SerializeField] private CanvasScaler _canvasScaler;
         [SerializeField] private InfoPanel _infoPanel;
-        [SerializeField] private ToolbarPanel toolbarPanel;
-        private ModelDataInventory _modelDataInventory;
+        [SerializeField] private ToolbarPanel _toolbarPanel;
+        private ObjectDataInventory _objectDataInventory;
 
         public Vector2 ReferenceResolution => _canvasScaler.referenceResolution;
         public InfoPanel InfoPanel => _infoPanel;
-        public ToolbarPanel ToolbarPanel => toolbarPanel;
+        public ToolbarPanel ToolbarPanel => _toolbarPanel;
 
-        public event Action<ModelData> PressedDataButton;
+        public event Action<InteractiveObjectData> PressedDataButton;
 
         [Inject]
-        private void Constructor(ModelDataInventory modelDataInventory)
+        private void Constructor(ObjectDataInventory objectDataInventory)
         {
-            _modelDataInventory = modelDataInventory;
+            _objectDataInventory = objectDataInventory;
         }
 
         public void Init()
         {
             _infoPanel.SetVisible = false;
-            _modelDataInventory.ModelsData.ForEach(data =>
+            _objectDataInventory.ModelsData.ForEach(data =>
             {
                 data.ModelButton.Button.onClick.AddListener(() => OnPressedModelDataButton(data));
             });
@@ -37,20 +37,20 @@ namespace UI
 
         private void OnDestroy()
         {
-            _modelDataInventory.ModelsData.ForEach(data =>
+            _objectDataInventory.ModelsData.ForEach(data =>
             {
                 data.ModelButton.Button.onClick.RemoveAllListeners();
             });
         }
 
-        private void EnableDataButton(ModelData data, bool value)
+        private void EnableDataButton(InteractiveObjectData data, bool value)
         {
             data.ModelButton.Button.interactable = value;
         }
 
-        private void ToggleActiveButton(ModelData data)
+        private void ToggleActiveButton(InteractiveObjectData data)
         {
-            _modelDataInventory.ModelsData
+            _objectDataInventory.ModelsData
                 .ForEach(modelData =>
                 {
                     var value = data != modelData;
@@ -58,11 +58,12 @@ namespace UI
                 });
         }
 
-        private void OnPressedModelDataButton(ModelData data)
+        private void OnPressedModelDataButton(InteractiveObjectData data)
         {
             ToggleActiveButton(data);
 
-            _infoPanel.SetDescriptionText = data.Model.GetLocalizedDescription;
+            _toolbarPanel.ResetIncisionButton();
+            _infoPanel.SetDescriptionText = data.InteractiveObject.GetLocalizedDescription;
             _infoPanel.SetPartName = string.Empty;
             
             PressedDataButton?.Invoke(data);

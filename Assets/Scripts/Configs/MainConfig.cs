@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Parts;
+using InteractiveObject.Base;
 using UI;
 using UnityEngine;
 
@@ -10,10 +10,10 @@ namespace Configs
     {
         [SerializeField] private float _mouseSensitive;
         [SerializeField] private ModelButton _modelButtonPrefab;
-        [SerializeField] private List<Model> _modelPrefabs;
+        [SerializeField] private List<BaseInteractiveObject> _objectPrefabs;
 
         public float MouseSensitive => _mouseSensitive;
         public ModelButton ModelButtonPrefab => _modelButtonPrefab;
-        public List<Model> ModelsPrefabs => _modelPrefabs;
+        public List<BaseInteractiveObject> ObjectPrefabs => _objectPrefabs;
     }
 }

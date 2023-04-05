@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Common.Localization;
+using InteractiveObject.Interfaces;
 using UnityEngine;
 
-namespace Parts
+namespace InteractiveObject.Base
 {
-    public class Model : MonoBehaviour, IModel
+    public class BaseInteractiveObject : MonoBehaviour, IInteractiveObject
     {
-        [SerializeField] private LocalizedItem _modelName;
-        [SerializeField] private LocalizedItem _modelDescription;
-        [SerializeField] private GameObject _bodyFront;
-        [SerializeField] private Material _outlineMaterial;
-        private List<OutlinePart> _outlineParts;
-        private List<LocalizedItem> _localizedParts;
-        private float _outlineScale;
+        [SerializeField] protected LocalizedItem _modelName;
+        [SerializeField] protected LocalizedItem _modelDescription;
+        [SerializeField] protected GameObject _bodyFront;
+        [SerializeField] protected Material _outlineMaterial;
+        protected List<OutlinePart> _outlineParts;
+        protected List<LocalizedItem> _localizedParts;
+        protected float _outlineScale;
 
         public bool Visibility
         {
@@ -28,7 +29,7 @@ namespace Parts
         public string GetLocalizedDescription => _modelDescription != null 
             ? _modelDescription.LocalizedText
             : string.Empty;
-
+        
         public Vector2 SetLocalRotation
         {
             set => transform.localRotation = Quaternion.Euler(value.x, value.y, 0f);
@@ -84,19 +85,17 @@ namespace Parts
             _outlineParts
                 ?.ForEach(p => p.OutlineScale = 0f);
         }
-
-        public string GetPartLocalizedText(GameObject obj)
+        
+        public virtual string GetPartLocalizedText(GameObject obj)
         {
-            return _localizedParts
-                ?.FirstOrDefault(l => string.Equals(l.name, obj.name))
-                ?.LocalizedText;
+            return string.Empty;
         }
 
-        public void StartAnimation()
+        public virtual void StartAnimation()
         {
         }
 
-        public void StopAnimation()
+        public virtual void StopAnimation()
         {
         }
     }

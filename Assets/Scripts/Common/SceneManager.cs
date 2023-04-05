@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using Common.Localization;
 using Configs;
+using InteractiveObject;
+using InteractiveObject.Interfaces;
 using Inventory;
-using Parts;
 using UI;
 using UnityEngine;
 using Zenject;
@@ -17,26 +18,26 @@ namespace Common
         private LocalizationController _localizationController;
         private PlayerController _playerController;
         private UIController _uiController;
-        private ModelDataInventory _modelDataInventory;
+        private ObjectDataInventory _objectDataInventory;
         private MainConfig _mainConfig;
-        private ModelData _currentModelData;
+        private InteractiveObjectData _currentInteractiveObjectData;
 
         public Camera PlayerCamera => _playerCamera;
         public Camera CanvasCamera => _canvasCamera;
-        public IModel GetCurrentModelData => _currentModelData.Model;
+        public IInteractiveObject GetCurrentInteractiveObjectData => _currentInteractiveObjectData.InteractiveObject;
 
         [Inject]
         private void Constructor(
             UIController uiController, 
             PlayerController playerController,
             LocalizationController localizationController,
-            ModelDataInventory modelDataInventory,
+            ObjectDataInventory objectDataInventory,
             MainConfig mainConfig)
         {
             _uiController = uiController;
             _playerController = playerController;
             _localizationController = localizationController;
-            _modelDataInventory = modelDataInventory;
+            _objectDataInventory = objectDataInventory;
             _mainConfig = mainConfig;
         }
 
@@ -57,13 +58,13 @@ namespace Common
 
         private IEnumerator CreateModelsData()
         {
-            var modelPrefabs = _mainConfig.ModelsPrefabs;
+            var modelPrefabs = _mainConfig.ObjectPrefabs;
             var buttonPrefab = _mainConfig.ModelButtonPrefab;
             var buttonsParent = _uiController.ToolbarPanel.ButtonsContentRectTransform;
             
             foreach (var prefab in modelPrefabs)
             {
-                yield return _modelDataInventory
+                yield return _objectDataInventory
                     .CreateModelData(prefab, buttonPrefab, _inventoryTransform, buttonsParent);
             }
         }
@@ -78,20 +79,20 @@ namespace Common
 
         private bool CheckCurrentModelDataAvailability()
         {
-            if (_currentModelData != null && !_currentModelData.Equals(null)) return true;
+            if (_currentInteractiveObjectData != null && !_currentInteractiveObjectData.Equals(null)) return true;
             Debug.Log("[SceneManager] No current model.");
             return false;
         }
 
-        private void OnPressedDataButton(ModelData data)
+        private void OnPressedDataButton(InteractiveObjectData data)
         {
             if (CheckCurrentModelDataAvailability())
             {
-                _currentModelData.Model.Visibility = false;
+                _currentInteractiveObjectData.InteractiveObject.Visibility = false;
             }
-
-            _currentModelData = data;
-            _currentModelData.Model.Visibility = true;
+            
+            _currentInteractiveObjectData = data;
+            _currentInteractiveObjectData.InteractiveObject.Visibility = true;
         }
 
         private void OnPressedIncisionButton(bool isIncision)
@@ -99,7 +100,7 @@ namespace Common
             if (!CheckCurrentModelDataAvailability())
                 return;
             
-            _currentModelData.Model.SetVisibilityBodyFront(isIncision);
+            _currentInteractiveObjectData.InteractiveObject.SetVisibilityBodyFront(isIncision);
         }
 
         private void OnPressedResetTurnButton()
@@ -107,7 +108,7 @@ namespace Common
             if (!CheckCurrentModelDataAvailability())
                 return;
             
-            _currentModelData.Model.ResetRotation();
+            _currentInteractiveObjectData.InteractiveObject.ResetRotation();
             _playerController.ResetRotation();
         }
 
@@ -116,9 +117,9 @@ namespace Common
             if (!CheckCurrentModelDataAvailability())
                 return;
             
-            var partLocalizedText = _currentModelData.Model.GetPartLocalizedText(obj);
+            var partLocalizedText = _currentInteractiveObjectData.InteractiveObject.GetPartLocalizedText(obj);
             _uiController.InfoPanel.SetPartName = partLocalizedText;
-            _currentModelData.Model.MakeAnOutline(obj);
+            _currentInteractiveObjectData.InteractiveObject.MakeAnOutline(obj);
         }
     }
 }

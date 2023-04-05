@@ -1,8 +1,8 @@
 ﻿using Common;
 using Common.Localization;
 using Factories;
+using InteractiveObject.Base;
 using Inventory;
-using Parts;
 using Services;
 using UI;
 using UnityEngine;
@@ -26,13 +26,14 @@ namespace Bootstrap
             Container.InstallRegistry(_localizationController);
             
             Container.InstallService<InputService>();
+            Container.InstallService<RaycastService>();
             
-            Container.InstallFactory<Model, ModelFactory>();
-            Container.InstallFactory<ModelButton, ModelButtonFactory>();
+            Container.InstallFactory<BaseInteractiveObject, InteractiveObjectFactory>();
+            Container.InstallFactory<ModelButton, ObjectButtonFactory>();
 
-            Container.Bind<ModelInventory>().AsSingle();
-            Container.Bind<ModelButtonInventory>().AsSingle();
-            Container.Bind<ModelDataInventory>().AsSingle();
+            Container.Bind<InteractiveObjectInventory>().AsSingle();
+            Container.Bind<ObjectButtonInventory>().AsSingle();
+            Container.Bind<ObjectDataInventory>().AsSingle();
         }
     }
 }
