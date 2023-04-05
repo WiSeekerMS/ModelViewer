@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using Common.Localization;
 using Configs;
-using InteractiveObject;
 using InteractiveObject.Base;
+using InteractiveObject.Data;
 using InteractiveObject.Interfaces;
 using Inventory;
 using UI;
@@ -25,7 +25,7 @@ namespace Common
 
         public Camera PlayerCamera => _playerCamera;
         public Camera CanvasCamera => _canvasCamera;
-        public IInteractiveObject GetCurrentInteractiveObjectData => _currentInteractiveObjectData.InteractiveObject;
+        public IInteractiveObject GetCurrentObject => _currentInteractiveObjectData.InteractiveObject;
         public Transform ObjectInventoryTransform => _inventoryTransform;
 
         [Inject]
@@ -63,7 +63,7 @@ namespace Common
         private IEnumerator CreateModelsData()
         {
             var modelPrefabs = _mainConfig.ObjectPrefabs;
-            var buttonPrefab = _mainConfig.ModelButtonPrefab;
+            var buttonPrefab = _mainConfig.ObjectButtonPrefab;
             var buttonsParent = _uiController.ToolbarPanel.ButtonsContentRectTransform;
             
             foreach (var prefab in modelPrefabs)

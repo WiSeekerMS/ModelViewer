@@ -1,10 +1,11 @@
 ﻿using UI;
+using UI.Buttons;
 using UnityEngine;
 using Zenject;
 
 namespace Factories
 {
-    public class ObjectButtonFactory : PlaceholderFactory<ModelButton>
+    public class ObjectButtonFactory : PlaceholderFactory<ObjectButton>
     {
         private DiContainer _diContainer;
 
@@ -13,9 +14,9 @@ namespace Factories
             _diContainer = diContainer;
         }
         
-        public ModelButton Create(ModelButton prefab, Vector3 worldPosition, Transform parent)
+        public ObjectButton Create(ObjectButton prefab, Vector3 worldPosition, Transform parent)
         {
-            return _diContainer.InstantiatePrefabForComponent<ModelButton>(prefab,
+            return _diContainer.InstantiatePrefabForComponent<ObjectButton>(prefab,
                 worldPosition, Quaternion.identity, parent);
         }
     }

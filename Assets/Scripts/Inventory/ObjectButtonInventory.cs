@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Factories;
-using UI;
+using UI.Buttons;
 using UnityEngine;
 
 namespace Inventory
@@ -8,14 +8,14 @@ namespace Inventory
     public class ObjectButtonInventory
     {
         private ObjectButtonFactory _factory;
-        private List<ModelButton> _buttons = new List<ModelButton>();
+        private List<ObjectButton> _buttons = new List<ObjectButton>();
 
         public ObjectButtonInventory(ObjectButtonFactory factory)
         {
             _factory = factory;
         }
 
-        public ModelButton CreateButton(ModelButton prefab, Vector3 worldPosition, Transform parent)
+        public ObjectButton CreateButton(ObjectButton prefab, Vector3 worldPosition, Transform parent)
         {
             var modelButton = _factory.Create(prefab, worldPosition, parent);
             _buttons.Add(modelButton);

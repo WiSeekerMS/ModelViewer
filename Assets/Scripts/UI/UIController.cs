@@ -1,6 +1,7 @@
 ﻿using System;
-using InteractiveObject;
+using InteractiveObject.Data;
 using Inventory;
+using UI.Panels;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -31,7 +32,7 @@ namespace UI
             _infoPanel.SetVisible = false;
             _objectDataInventory.ModelsData.ForEach(data =>
             {
-                data.ModelButton.Button.onClick.AddListener(() => OnPressedModelDataButton(data));
+                data.ObjectButton.onClick.AddListener(() => OnPressedModelDataButton(data));
             });
         }
 
@@ -39,13 +40,13 @@ namespace UI
         {
             _objectDataInventory.ModelsData.ForEach(data =>
             {
-                data.ModelButton.Button.onClick.RemoveAllListeners();
+                data.ObjectButton.onClick.RemoveAllListeners();
             });
         }
 
         private void EnableDataButton(InteractiveObjectData data, bool value)
         {
-            data.ModelButton.Button.interactable = value;
+            data.ObjectButton.interactable = value;
         }
 
         private void ToggleActiveButton(InteractiveObjectData data)

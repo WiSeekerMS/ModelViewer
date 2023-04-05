@@ -2,7 +2,7 @@
 
 namespace InteractiveObject.Interfaces
 {
-    public interface IObjectAnimated
+    public interface IObjectEffect
     {
         void PlayEffect(EffectType effectType);
         void StopEffect(EffectType effectType);

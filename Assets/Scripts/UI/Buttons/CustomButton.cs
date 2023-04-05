@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.Buttons
 {
     public class CustomButton : Button
     {

@@ -1,10 +1,11 @@
 ﻿using System;
 using Common;
+using UI.Buttons;
 using UnityEngine;
 using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
 
-namespace UI
+namespace UI.Panels
 {
     public class ToolbarPanel : MonoBehaviour
     {

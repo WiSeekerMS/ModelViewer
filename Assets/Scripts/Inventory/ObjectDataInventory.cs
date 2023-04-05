@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using InteractiveObject;
 using InteractiveObject.Base;
-using UI;
+using InteractiveObject.Data;
+using UI.Buttons;
 using UnityEngine;
 
 namespace Inventory
@@ -24,7 +24,7 @@ namespace Inventory
 
         public IEnumerator<InteractiveObjectData> CreateModelData(
             BaseInteractiveObject interactiveObjectPrefab, 
-            ModelButton buttonPrefab, 
+            ObjectButton buttonPrefab, 
             Transform modelParent, 
             RectTransform buttonsParent)
         {
@@ -36,13 +36,6 @@ namespace Inventory
             _modelsData.Add(modelData);
             
             yield return modelData;
-        }
-
-        public InteractiveObjectData GetDataByIndex(int index)
-        {
-            return _modelsData.Count > index && index > 0 
-                ? _modelsData[index] 
-                : null;
         }
     }
 }

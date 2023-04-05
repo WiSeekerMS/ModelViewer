@@ -5,6 +5,7 @@ using InteractiveObject.Base;
 using Inventory;
 using Services;
 using UI;
+using UI.Buttons;
 using UnityEngine;
 using Utils.Extensions;
 using Zenject;
@@ -28,7 +29,7 @@ namespace Bootstrap
             Container.InstallService<InputService>();
 
             Container.InstallFactory<BaseInteractiveObject, InteractiveObjectFactory>();
-            Container.InstallFactory<ModelButton, ObjectButtonFactory>();
+            Container.InstallFactory<ObjectButton, ObjectButtonFactory>();
 
             Container.Bind<InteractiveObjectInventory>().AsSingle();
             Container.Bind<ObjectButtonInventory>().AsSingle();

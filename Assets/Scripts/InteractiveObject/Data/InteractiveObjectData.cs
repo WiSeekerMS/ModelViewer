@@ -1,21 +1,22 @@
 ﻿using InteractiveObject.Interfaces;
-using UI;
+using UI.Buttons;
 
-namespace InteractiveObject
+namespace InteractiveObject.Data
 {
     public class InteractiveObjectData
     {
         private readonly IInteractiveObject _interactiveObject;
-        private readonly ModelButton _button;
+        private readonly ObjectButton _button;
 
         public IInteractiveObject InteractiveObject => _interactiveObject;
-        public ModelButton ModelButton => _button;
+        public ObjectButton ObjectButton => _button;
         
-        public InteractiveObjectData(IInteractiveObject interactiveObject, ModelButton button)
+        public InteractiveObjectData(IInteractiveObject interactiveObject, ObjectButton button)
         {
             _interactiveObject = interactiveObject;
+            
             _button = button;
-            _button.SetButtonText = _interactiveObject.GetLocalizedName;
+            _button.Init(_interactiveObject.GetLocalizedName);
         }
     }
 }

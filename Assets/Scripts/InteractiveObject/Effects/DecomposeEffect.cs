@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using Common;
+using Configs;
 using DG.Tweening;
 using InteractiveObject.Base;
 using UnityEngine;
+using Zenject;
 
 namespace InteractiveObject.Effects
 {
@@ -10,14 +12,17 @@ namespace InteractiveObject.Effects
     {
         [SerializeField] private EffectType _effectType;
         [SerializeField] private List<BasePart> _parts;
+        private MainConfig _mainConfig;
         private Sequence _sequence;
-
-        private const float MoveSpeed = 0.5f;
-        private const float RotateSpeed = 0.5f;
-        private const float DelayBeforeComplete = 1f;
 
         public EffectType EffectType => _effectType;
 
+        [Inject]
+        private void Constructor(MainConfig mainConfig)
+        {
+            _mainConfig = mainConfig;
+        }
+        
         private void OnDisable()
         {
             _sequence?.Kill();
@@ -27,19 +32,20 @@ namespace InteractiveObject.Effects
                 if (part.IsHideWhenDecomposing)
                     part.EnableRenderers = true;
 
-                part.transform.localPosition = part.GetDefaultLocalPosition;
-                part.transform.localRotation = part.GetDefaultLocalRotate;
+                var partTransform = part.transform;
+                partTransform.localPosition = part.GetDefaultLocalPosition;
+                partTransform.localRotation = part.GetDefaultLocalRotate;
             }
         }
 
         private void CreateTween(BasePart part, Vector3 targetPos, Quaternion targetRot)
         {
             var moveTween = part.transform
-                .DOLocalMove(targetPos, MoveSpeed)
+                .DOLocalMove(targetPos, _mainConfig.MoveSpeed)
                 .SetEase(Ease.Linear).Pause();
                 
             var rotateTween = part.transform
-                .DOLocalRotateQuaternion(targetRot, RotateSpeed)
+                .DOLocalRotateQuaternion(targetRot, _mainConfig.RotateSpeed)
                 .SetEase(Ease.Linear).Pause();
 
             _sequence.Join(moveTween);
@@ -69,7 +75,10 @@ namespace InteractiveObject.Effects
         {
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
-            _sequence.OnComplete(OnShowHiddenParts).SetDelay(DelayBeforeComplete);
+            
+            _sequence
+                .OnComplete(OnShowHiddenParts)
+                .SetDelay(_mainConfig.DelayBeforeComplete);
             
             foreach (var part in _parts)
             {
