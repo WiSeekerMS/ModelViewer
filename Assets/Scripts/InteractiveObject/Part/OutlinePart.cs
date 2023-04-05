@@ -1,7 +1,7 @@
 ﻿using Common;
 using UnityEngine;
 
-namespace InteractiveObject
+namespace InteractiveObject.Part
 {
     [RequireComponent(typeof(MeshRenderer))]
     public class OutlinePart : MonoBehaviour

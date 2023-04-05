@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using InteractiveObject.Base;
+using UnityEngine;
 
 namespace InteractiveObject.Interfaces
 {
@@ -6,6 +7,6 @@ namespace InteractiveObject.Interfaces
     {
         string GetLocalizedName { get; }
         string GetLocalizedDescription { get; }
-        string GetPartLocalizedText(GameObject obj);
+        string GetPartLocalizedText(BasePart obj);
     }
 }

@@ -1,16 +1,15 @@
 ﻿using System.Linq;
 using InteractiveObject.Base;
-using UnityEngine;
 
 namespace InteractiveObject.ExampleObjects
 {
     public class RedExampleObject : BaseInteractiveObject
     {
-        public override string GetPartLocalizedText(GameObject obj)
+        public override string GetPartLocalizedText(BasePart obj)
         {
-            return _localizedParts
-                ?.FirstOrDefault(l => string.Equals(l.name, obj.name))
-                ?.LocalizedText;
+            return _parts
+                ?.FirstOrDefault(p => string.Equals(p.name, obj.name))
+                ?.GetLocalizedItem.LocalizedText;
         }
 
         public override void StartAnimation()

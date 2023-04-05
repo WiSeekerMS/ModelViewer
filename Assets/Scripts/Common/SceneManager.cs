@@ -2,6 +2,7 @@
 using Common.Localization;
 using Configs;
 using InteractiveObject;
+using InteractiveObject.Base;
 using InteractiveObject.Interfaces;
 using Inventory;
 using UI;
@@ -25,6 +26,7 @@ namespace Common
         public Camera PlayerCamera => _playerCamera;
         public Camera CanvasCamera => _canvasCamera;
         public IInteractiveObject GetCurrentInteractiveObjectData => _currentInteractiveObjectData.InteractiveObject;
+        public Transform ObjectInventoryTransform => _inventoryTransform;
 
         [Inject]
         private void Constructor(
@@ -116,10 +118,13 @@ namespace Common
         {
             if (!CheckCurrentModelDataAvailability())
                 return;
-            
-            var partLocalizedText = _currentInteractiveObjectData.InteractiveObject.GetPartLocalizedText(obj);
+
+            var basePart = obj.GetComponent<BasePart>();
+            if (!basePart) return;
+
+            var partLocalizedText = _currentInteractiveObjectData.InteractiveObject.GetPartLocalizedText(basePart);
             _uiController.InfoPanel.SetPartName = partLocalizedText;
-            _currentInteractiveObjectData.InteractiveObject.MakeAnOutline(obj);
+            _currentInteractiveObjectData.InteractiveObject.MakeAnOutline(basePart);
         }
     }
 }

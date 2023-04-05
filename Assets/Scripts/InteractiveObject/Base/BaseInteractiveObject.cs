@@ -12,8 +12,7 @@ namespace InteractiveObject.Base
         [SerializeField] protected LocalizedItem _modelDescription;
         [SerializeField] protected GameObject _bodyFront;
         [SerializeField] protected Material _outlineMaterial;
-        protected List<OutlinePart> _outlineParts;
-        protected List<LocalizedItem> _localizedParts;
+        protected List<BasePart> _parts;
         protected float _outlineScale;
 
         public bool Visibility
@@ -44,19 +43,15 @@ namespace InteractiveObject.Base
 
         private void Start()
         {
-            _localizedParts = transform
-                .GetComponentsInChildren<LocalizedItem>()
-                .ToList();
-            
-            _outlineParts = transform
-                .GetComponentsInChildren<OutlinePart>()
+            _parts = transform
+                .GetComponentsInChildren<BasePart>()
                 .ToList();
 
-            _outlineParts?.ForEach(p =>
+            _parts?.ForEach(p =>
             {
-                p.Material = new Material(_outlineMaterial);
-                _outlineScale = p.OutlineScale;
-                p.OutlineScale = 0f;
+                p.GetOutlinePart.Material = new Material(_outlineMaterial);
+                _outlineScale = p.GetOutlinePart.OutlineScale;
+                p.GetOutlinePart.OutlineScale = 0f;
             });
         }
 
@@ -70,11 +65,11 @@ namespace InteractiveObject.Base
             transform.rotation = Quaternion.identity;
         }
 
-        public void MakeAnOutline(GameObject obj)
+        public void MakeAnOutline(BasePart obj)
         {
-            _outlineParts?.ForEach(p =>
+            _parts?.ForEach(p =>
             {
-                p.OutlineScale = string.Equals(p.GetParentName, obj.name)
+                p.GetOutlinePart.OutlineScale = string.Equals(p.GetOutlinePart.GetParentName, obj.name)
                     ? _outlineScale
                     : 0f;
             });
@@ -82,11 +77,11 @@ namespace InteractiveObject.Base
 
         public void ResetOutline()
         {
-            _outlineParts
-                ?.ForEach(p => p.OutlineScale = 0f);
+            _parts
+                ?.ForEach(p => p.GetOutlinePart.OutlineScale = 0f);
         }
         
-        public virtual string GetPartLocalizedText(GameObject obj)
+        public virtual string GetPartLocalizedText(BasePart obj)
         {
             return string.Empty;
         }

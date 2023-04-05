@@ -10,6 +10,7 @@ namespace UI
         private UIController _uiController;
         private RectTransform _rect;
         private Transform _playerCameraTransform;
+        private Transform _objectInventoryTransform;
 
         [Inject]
         private void Constructor(
@@ -24,6 +25,7 @@ namespace UI
         {
             _rect = transform as RectTransform;
             _playerCameraTransform = _sceneManager.PlayerCamera.transform;
+            _objectInventoryTransform = _sceneManager.ObjectInventoryTransform;
             
             _uiController.InfoPanel.ChangedVisibility += OnValueChanged;
         }
@@ -35,15 +37,16 @@ namespace UI
 
         private void OnValueChanged(RectTransform rectTransform)
         {
+            var delta = Mathf.Abs(_playerCameraTransform.position.z / Constants.DefaultPlayerCameraZPos);
             var leftPosition = _uiController.ReferenceResolution.x + rectTransform.offsetMax.x;
             _rect.offsetMin = new Vector2(leftPosition, _rect.offsetMin.y);
             
             var worldPoint = _sceneManager.CanvasCamera.ScreenToWorldPoint(_rect.position);
-            _playerCameraTransform.position = new Vector3
+            _objectInventoryTransform.position = new Vector3
             {
-                x = -worldPoint.x,
+                x = worldPoint.x * delta,
                 y = worldPoint.y,
-                z = _playerCameraTransform.position.z
+                z = 0f
             };
         }
     }

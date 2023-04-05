@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 1946879597984183097}
   - component: {fileID: 1946879597984183094}
   - component: {fileID: 1946879597984183095}
+  - component: {fileID: 264361251516989248}
   m_Layer: 0
   m_Name: Cube 2
   m_TagString: Untagged
@@ -419,6 +420,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &264361251516989248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946879597984183093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdcb7c817cc24ebd857a0b2c4acb8b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlinePart: {fileID: 1946879597160090209}
+  _localizedItem: {fileID: 1946879597984183095}
 --- !u!1 &1946879598174238229
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +447,7 @@ GameObject:
   - component: {fileID: 1946879598174238233}
   - component: {fileID: 1946879598174238230}
   - component: {fileID: 1946879598174238231}
+  - component: {fileID: 3717068727517773158}
   m_Layer: 0
   m_Name: Gear Min 2
   m_TagString: Untagged
@@ -552,6 +568,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &3717068727517773158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946879598174238229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdcb7c817cc24ebd857a0b2c4acb8b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlinePart: {fileID: 1946879596594830724}
+  _localizedItem: {fileID: 1946879598174238231}
 --- !u!1 &2965568872954610565
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,12 +606,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2965568872954610565}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8119347092936904000}
+  m_Father: {fileID: 4497059003391105540}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &207061664741633225
@@ -824,12 +854,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4012392533174401013}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8119347092936904000}
+  m_Father: {fileID: 4497059003391105540}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3529122410895415895
@@ -856,6 +886,39 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!1 &6330740094323842151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4497059003391105540}
+  m_Layer: 0
+  m_Name: Localized Items
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4497059003391105540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6330740094323842151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4441942123052704836}
+  - {fileID: 7557497717335370000}
+  m_Father: {fileID: 8119347092936904000}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7774085317570023228
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,6 +971,7 @@ GameObject:
   - component: {fileID: 8119347092361294056}
   - component: {fileID: 8119347092361294057}
   - component: {fileID: 8312747756973483921}
+  - component: {fileID: 6838705534820319612}
   m_Layer: 0
   m_Name: Gear Max
   m_TagString: Untagged
@@ -1028,6 +1092,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &6838705534820319612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119347092361294059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdcb7c817cc24ebd857a0b2c4acb8b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlinePart: {fileID: 5281851050051723426}
+  _localizedItem: {fileID: 8312747756973483921}
 --- !u!1 &8119347092472944292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,6 +1119,7 @@ GameObject:
   - component: {fileID: 8119347092472944289}
   - component: {fileID: 8119347092472944290}
   - component: {fileID: 3798391295262197108}
+  - component: {fileID: 8074749403176244582}
   m_Layer: 0
   m_Name: Cube 1
   m_TagString: Untagged
@@ -1159,6 +1238,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &8074749403176244582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119347092472944292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdcb7c817cc24ebd857a0b2c4acb8b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlinePart: {fileID: 1971308193174971779}
+  _localizedItem: {fileID: 3798391295262197108}
 --- !u!1 &8119347092936904001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,6 +1262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8119347092936904000}
   - component: {fileID: 634877347987540962}
+  - component: {fileID: 6062604289795030822}
   m_Layer: 0
   m_Name: YellowExampleObject
   m_TagString: Untagged
@@ -1188,9 +1282,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4441942123052704836}
-  - {fileID: 7557497717335370000}
   - {fileID: 4296685155197278895}
+  - {fileID: 4497059003391105540}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1210,6 +1303,25 @@ MonoBehaviour:
   _modelDescription: {fileID: 3529122410895415895}
   _bodyFront: {fileID: 8119347093281345925}
   _outlineMaterial: {fileID: 2100000, guid: 23447aaf5bb1a8a429deabc92ede5f03, type: 2}
+--- !u!114 &6062604289795030822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119347092936904001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7f8eb60d014cb593f616eb1b6cc6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parts:
+  - {fileID: 6964208764177063562}
+  - {fileID: 6984358707992309006}
+  - {fileID: 3717068727517773158}
+  - {fileID: 6838705534820319612}
+  - {fileID: 8074749403176244582}
+  - {fileID: 264361251516989248}
 --- !u!1 &8119347093136528136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,6 +1335,7 @@ GameObject:
   - component: {fileID: 8119347093136528134}
   - component: {fileID: 8119347093136528135}
   - component: {fileID: 1597197824515432401}
+  - component: {fileID: 450246655667023323}
   m_Layer: 0
   m_Name: Body Back
   m_TagString: Untagged
@@ -1341,6 +1454,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &450246655667023323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119347093136528136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdcb7c817cc24ebd857a0b2c4acb8b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlinePart: {fileID: 5660953299119357800}
+  _localizedItem: {fileID: 1597197824515432401}
 --- !u!1 &8119347093281345925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,6 +1481,7 @@ GameObject:
   - component: {fileID: 8119347093281345922}
   - component: {fileID: 8119347093281345923}
   - component: {fileID: 8926147827845804050}
+  - component: {fileID: 3367937645770730643}
   m_Layer: 0
   m_Name: Body Front
   m_TagString: Untagged
@@ -1472,6 +1600,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &3367937645770730643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119347093281345925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdcb7c817cc24ebd857a0b2c4acb8b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlinePart: {fileID: 1583968163801218614}
+  _localizedItem: {fileID: 8926147827845804050}
 --- !u!1 &8119347093528786000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,6 +1627,7 @@ GameObject:
   - component: {fileID: 8119347093528785997}
   - component: {fileID: 8119347093528785998}
   - component: {fileID: 2013381473920737534}
+  - component: {fileID: 6984358707992309006}
   m_Layer: 0
   m_Name: Gear Min 1
   m_TagString: Untagged
@@ -1605,6 +1748,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &6984358707992309006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119347093528786000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdcb7c817cc24ebd857a0b2c4acb8b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlinePart: {fileID: 5134935085096240369}
+  _localizedItem: {fileID: 2013381473920737534}
 --- !u!1 &8119347093626804049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,6 +1775,7 @@ GameObject:
   - component: {fileID: 8119347093626804046}
   - component: {fileID: 8119347093626804047}
   - component: {fileID: 2057614428361721862}
+  - component: {fileID: 6964208764177063562}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -1738,6 +1896,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &6964208764177063562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119347093626804049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdcb7c817cc24ebd857a0b2c4acb8b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlinePart: {fileID: 8864524431556763927}
+  _localizedItem: {fileID: 2057614428361721862}
 --- !u!1 &8655214931870393940
 GameObject:
   m_ObjectHideFlags: 0
