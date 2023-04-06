@@ -37,13 +37,6 @@ namespace InteractiveObject.Base
             set => transform.localRotation = Quaternion.Euler(value.x, value.y, 0f);
         }
 
-        private void OnEnable()
-        {
-            ResetOutline();
-            ResetRotation();
-            SetVisibilityBodyFront(true);
-        }
-
         private void Start()
         {
             _effects = transform
@@ -60,6 +53,13 @@ namespace InteractiveObject.Base
                 _outlineScale = p.GetOutlinePart.OutlineScale;
                 p.GetOutlinePart.OutlineScale = 0f;
             });
+        }
+        
+        private void OnEnable()
+        {
+            ResetOutline();
+            ResetRotation();
+            SetVisibilityBodyFront(true);
         }
 
         public void SetVisibilityBodyFront(bool isVisible)
@@ -84,8 +84,7 @@ namespace InteractiveObject.Base
 
         public void ResetOutline()
         {
-            _parts
-                ?.ForEach(p => p.GetOutlinePart.OutlineScale = 0f);
+            _parts?.ForEach(p => p.GetOutlinePart.OutlineScale = 0f);
         }
         
         public virtual string GetPartLocalizedText(BasePart obj)
@@ -102,13 +101,10 @@ namespace InteractiveObject.Base
             }
 
             var effect = _effects.Find(e => e.EffectType == effectType);
-            if (effect == null)
-            {
-                Debug.Log("[BaseInteractiveObject] Specified effect not found.");
-                return null;
-            }
-
-            return effect;
+            if (effect != null) return effect;
+            
+            Debug.Log("[BaseInteractiveObject] Specified effect not found.");
+            return null;
         }
 
         public void PlayEffect(EffectType effectType)

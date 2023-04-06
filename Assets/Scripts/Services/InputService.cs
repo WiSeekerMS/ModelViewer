@@ -9,8 +9,8 @@ namespace Services
         private Controls _controls;
         
         public bool IsGrab => _controls != null && _controls.Main.Grab.IsPressed();
-        public float XAxisDelta => _controls != null ? _controls.Main.AxisX.ReadValue<float>() : 0f;
-        public float YAxisDelta => _controls != null ? _controls.Main.AxisY.ReadValue<float>() : 0f;
+        public float AxisXDelta => _controls != null ? _controls.Main.AxisX.ReadValue<float>() : 0f;
+        public float AxisYDelta => _controls != null ? _controls.Main.AxisY.ReadValue<float>() : 0f;
         public Vector2 MousePosition => Mouse.current.position.ReadValue();
         
         public InputService()

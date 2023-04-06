@@ -17,6 +17,6 @@ MonoBehaviour:
   _objectPrefabs:
   - {fileID: -2538229102092215892, guid: d27633207b41adf48b0eb930fcf167e0, type: 3}
   - {fileID: 634877347987540962, guid: 9cc2ddbf37f78a54b85724973a354028, type: 3}
-  _moveSpeed: 0.5
-  _rotateSpeed: 0.5
+  _moveDuration: 0.5
+  _turnDuration: 0.5
   _delayBeforeComplete: 1

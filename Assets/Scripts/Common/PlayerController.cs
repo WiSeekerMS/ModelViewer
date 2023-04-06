@@ -55,8 +55,8 @@ namespace Common
             var model = _sceneManager.GetCurrentObject;
             if (model == null || model.Equals(null)) return;
         
-            var valueX = _inputService.XAxisDelta * Time.deltaTime * _mainConfig.MouseSensitive;
-            var valueY = _inputService.YAxisDelta * Time.deltaTime * _mainConfig.MouseSensitive;
+            var valueX = _inputService.AxisXDelta * Time.deltaTime * _mainConfig.MouseSensitive;
+            var valueY = _inputService.AxisYDelta * Time.deltaTime * _mainConfig.MouseSensitive;
 
             _xRotation += valueY;
             _yRotation -= valueX;

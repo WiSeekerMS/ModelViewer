@@ -41,11 +41,11 @@ namespace InteractiveObject.Effects
         private void CreateTween(BasePart part, Vector3 targetPos, Quaternion targetRot)
         {
             var moveTween = part.transform
-                .DOLocalMove(targetPos, _mainConfig.MoveSpeed)
+                .DOLocalMove(targetPos, _mainConfig.MoveDuration)
                 .SetEase(Ease.Linear).Pause();
                 
             var rotateTween = part.transform
-                .DOLocalRotateQuaternion(targetRot, _mainConfig.RotateSpeed)
+                .DOLocalRotateQuaternion(targetRot, _mainConfig.TurnDuration)
                 .SetEase(Ease.Linear).Pause();
 
             _sequence.Join(moveTween);
