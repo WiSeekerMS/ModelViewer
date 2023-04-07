@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Extensions;
 using Common.Localization;
 using Factories;
 using InteractiveObject.Base;
@@ -7,7 +8,6 @@ using Services;
 using UI;
 using UI.Buttons;
 using UnityEngine;
-using Utils.Extensions;
 using Zenject;
 
 namespace Bootstrap

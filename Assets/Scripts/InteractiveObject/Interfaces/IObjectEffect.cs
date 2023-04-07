@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using Common.Enums;
 
 namespace InteractiveObject.Interfaces
 {

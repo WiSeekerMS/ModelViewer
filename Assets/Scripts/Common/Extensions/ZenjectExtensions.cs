@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace Utils.Extensions
+namespace Common.Extensions
 {
     public static class ZenjectExtensions
     {

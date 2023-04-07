@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
-using Common;
+using Common.Enums;
 using Configs;
 using DG.Tweening;
+using Effects.Interfaces;
 using InteractiveObject.Base;
 using UnityEngine;
 using Zenject;
 
-namespace InteractiveObject.Effects
+namespace Effects
 {
     public class DecomposeEffect : MonoBehaviour, IEffect
     {

@@ -1,6 +1,6 @@
-﻿using Common;
+﻿using Common.Enums;
 
-namespace InteractiveObject.Effects
+namespace Effects.Interfaces
 {
     public interface IEffect
     {

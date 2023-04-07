@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Common.Enums;
 using Common.Localization;
 using Configs;
 using InteractiveObject.Base;
@@ -85,7 +86,10 @@ namespace Common
 
         private bool CheckCurrentModelDataAvailability()
         {
-            if (_currentInteractiveObjectData != null && !_currentInteractiveObjectData.Equals(null)) return true;
+            if (_currentInteractiveObjectData != null 
+                && !_currentInteractiveObjectData.Equals(null)) 
+                return true;
+            
             Debug.Log("[SceneManager] No current model.");
             return false;
         }

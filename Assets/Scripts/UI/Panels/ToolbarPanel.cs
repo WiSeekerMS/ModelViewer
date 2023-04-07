@@ -1,5 +1,7 @@
 ﻿using System;
 using Common;
+using Common.Constants;
+using Common.Enums;
 using UI.Buttons;
 using UnityEngine;
 using UnityEngine.UI;

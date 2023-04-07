@@ -1,7 +1,8 @@
-﻿using Common;
+﻿using Common.Enums;
+using Effects.Interfaces;
 using UnityEngine;
 
-namespace InteractiveObject.Effects
+namespace Effects
 {
     public class MainEffect : MonoBehaviour, IEffect
     {

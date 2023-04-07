@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Constants;
 using UnityEngine;
 
 namespace InteractiveObject.Part
